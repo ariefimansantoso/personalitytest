@@ -1,0 +1,18 @@
+﻿@model PersonalityQuiz.ViewModels.FinalViewModel
+
+@{
+    ViewBag.Title = "Final";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col" style="margin:20px 0px;">
+            <p style="font-size:14px; font-weight: bold;">
+                You are: @Model.Result
+            </p>            
+            <p>@Model.PizzaComment</p>
+            <br /><br />
+            @Html.ActionLink("Stat New", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>

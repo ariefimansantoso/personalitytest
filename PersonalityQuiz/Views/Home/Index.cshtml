@@ -1,0 +1,37 @@
+﻿@model PersonalityQuiz.ViewModels.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("Next", "Home", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col" style="margin:20px 0px; font-size: 14px;">
+                Question @Model.CurrentQuestionOrder of @Model.TotalQuestions
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="lead">@Model.TheQuestion.QuestionDescription:</p>
+                @Html.Hidden("QuestionID", Model.TheQuestion.ID)
+                @Html.Hidden("UserID", Model.UserID)
+                @foreach (var answer in Model.AnswesOptions)
+                {
+                    <input type="radio" name="AnswerID" value="@answer.ID" id="AnswerID" />
+                    <label for="AnswerID">@answer.AnswerText</label><br />
+                }
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-4">
+                @{Html.RenderPartial("_PreviousButton", Model.PreviousID);}
+            </div>
+            <div class="col-sm-8">
+                <button type="submit" id="btnNext" value="Next" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </div>
+}
